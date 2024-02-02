@@ -1,6 +1,6 @@
 Summary:	KDE SDK KIO modules
 Name:		plasma6-kdesdk-kio
-Version:	24.01.90
+Version:	24.01.95
 Release:	1
 Group:		Graphical desktop/KDE
 License:	GPLv2+

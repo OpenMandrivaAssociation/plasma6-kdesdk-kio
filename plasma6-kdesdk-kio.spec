@@ -1,12 +1,19 @@
+%define git 20240218
+%define gitbranch release/24.02
+%define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	KDE SDK KIO modules
 Name:		plasma6-kdesdk-kio
-Version:	24.01.95
-Release:	1
+Version:	24.01.96
+Release:	%{?git:0.%{git}.}1
 Group:		Graphical desktop/KDE
 License:	GPLv2+
 Url:		http://www.kde.org
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
+%if 0%{?git:1}
+Source0:	https://invent.kde.org/sdk/kdesdk-kio/-/archive/%{gitbranch}/kdesdk-kio-%{gitbranchd}.tar.bz2#/kdesdk-kio-%{git}.tar.bz2
+%else
 Source0:	http://download.kde.org/%{stable}/release-service/%{version}/src/kdesdk-kio-%{version}.tar.xz
+%endif
 BuildRequires:	cmake(Qt6Gui)
 BuildRequires:	perl-devel
 BuildRequires:	cmake(ECM)
@@ -39,7 +46,7 @@ A KIO interface for Perl documentation.
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n kdesdk-kio-%{version}
+%autosetup -p1 -n kdesdk-kio-%{?git:%{gitbranchd}}%{!?git:%{version}}
 
 %build
 %cmake \

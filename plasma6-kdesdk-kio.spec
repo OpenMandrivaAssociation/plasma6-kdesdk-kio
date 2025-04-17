@@ -3,8 +3,8 @@
 %define gitbranchd %(echo %{gitbranch} |sed -e "s,/,-,g")
 Summary:	KDE SDK KIO modules
 Name:		plasma6-kdesdk-kio
-Version:	24.12.3
-Release:	%{?git:0.%{git}.}3
+Version:	25.04.0
+Release:	%{?git:0.%{git}.}1
 Group:		Graphical desktop/KDE
 License:	GPLv2+
 Url:		https://www.kde.org
